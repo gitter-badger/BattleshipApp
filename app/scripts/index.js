@@ -1,16 +1,23 @@
 'use strict';
 
 var fb = new Firebase('https://battleship16.firebaseio.com/');
-var b;
+var board  = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+var board2  = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
 
-$('button').on('click', function(){
-  createBoard();
-})
+$(document).ready(function () {
 
-function createBoard (b) {
-  b = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+});
+
+$('button').one('click', function(){
+  createBoard(board);
+  createBoard(board2);
+  chooseShip();
+  //firebaseBoard();
+});
+
+function createBoard (tableData) {
   var $table = $('<table></table>');
-  b.forEach(function (row) {
+  tableData.forEach(function (row) {
     var $tr = $('<tr></tr>');
     row.forEach(function (cell){
       $tr.append($('<td></td>'));
@@ -19,3 +26,15 @@ function createBoard (b) {
   });
   $('.board').append($table);
 }
+
+function chooseShip () {
+  $('td').one('click', function() {
+    $(this).append('s');
+  })
+}
+
+
+// function firebaseBoard() {
+//   var fbBoard = ({ board: ['','','','','','','','','','','','','','','','','','','','','','','','',''] });
+//   fb.child('game/').push(fbBoard);
+// }
