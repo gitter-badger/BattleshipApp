@@ -8,8 +8,8 @@ $('button').on('click', function(){
 })
 
 function createBoard (b) {
-  b = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']]
-  var $table = $('<table class="class"></table>');
+  b = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+  var $table = $('<table></table>');
   b.forEach(function (row) {
     var $tr = $('<tr></tr>');
     row.forEach(function (cell){
