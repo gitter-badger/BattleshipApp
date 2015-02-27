@@ -1,16 +1,15 @@
 'use strict';
 
 var fb = new Firebase('https://battleship16.firebaseio.com/');
-var b;
+var board = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
 
 $('button').on('click', function(){
-  createBoard();
+  createBoard(board);
 })
 
-function createBoard (b) {
-  b = [['','','','',''],['','','','',''],['','','','',''],['','','','',''],['','','','','']];
+function createBoard (tableData) {
   var $table = $('<table></table>');
-  b.forEach(function (row) {
+  tableData.forEach(function (row) {
     var $tr = $('<tr></tr>');
     row.forEach(function (cell){
       $tr.append($('<td></td>'));
@@ -18,4 +17,14 @@ function createBoard (b) {
     });
   });
   $('.board').append($table);
+  findCoords();
+}
+
+function findCoords(){
+  $('td').one('click', function(){
+  	var index = $('td').index(this).toString();
+  	$(this).data(index, 'submarine');
+    console.log($('td').index(this));
+    fb.child('/Moves').push($(this).data());
+  });
 }
