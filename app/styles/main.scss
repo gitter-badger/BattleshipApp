@@ -1,0 +1,13 @@
+.board{
+  border: 1px solid black;
+  min-width: 20px;
+	min-height: 20px;
+  tr, td {
+    border: 2px solid #04B431;
+    width: 110px;
+    height: 110px;
+    padding: 7px 7px 2px 7px;
+    background-color: black;
+    overflow: hidden;
+  }
+}
